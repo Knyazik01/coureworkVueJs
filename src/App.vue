@@ -45,9 +45,10 @@ export default {
 }
 
 .main {
-  width: 90%;
+  width: 95%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  margin: 0 40px;
 }
+
 </style>

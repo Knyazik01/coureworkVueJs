@@ -37,9 +37,13 @@ export default {
     text-decoration: none;
   }
 
-  &_link:hover {
+  &_link {
+    font-size: 1.1em;
+
+    &:hover {
       color: #fff;
       text-decoration: none;
+    }
   }
 
   &_logo {
