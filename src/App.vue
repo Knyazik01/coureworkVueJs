@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-<!--    <Header />-->
-<!--    <ProductsTypeDropdown />-->
-<!--    <butFind />-->
-<!--    <div class="inputs"></div>-->
-    <Footer />
+    <main class="main">
+      <!--    <Header />-->
+      <!--    <ProductsTypeDropdown />-->
+      <!--    <butFind />-->
+      <!--    <div class="inputs"></div>-->
+      <Footer />
+    </main>
+
 
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
@@ -32,10 +35,19 @@ export default {
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background: #000;
+
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px;
 }
 </style>
