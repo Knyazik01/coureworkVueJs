@@ -2,9 +2,10 @@
   <div id="app">
     <main class="main">
       <!--    <Header />-->
-      <!--    <ProductsTypeDropdown />-->
+          <ProductsTypeDropdown />
       <!--    <butFind />-->
       <!--    <div class="inputs"></div>-->
+      <Inputs />
       <Footer />
     </main>
 
@@ -16,8 +17,9 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue';
 // import Header from "@/components/header/Header";
-// import ProductsTypeDropdown from "@/components/product/ProductsTypeDropdown";
+import ProductsTypeDropdown from "@/components/product/ProductsTypeDropdown";
 // import butFind from "@/components/product/butFind";
+import Inputs from "@/components/input/Inputs";
 import Footer from "@/components/footer/Footer";
 
 export default {
@@ -25,8 +27,9 @@ export default {
   components: {
     // HelloWorld,
     // Header,
-    // ProductsTypeDropdown,
+    ProductsTypeDropdown,
     // butFind,
+    Inputs,
     Footer
   }
 }
