@@ -1,114 +1,121 @@
 <template>
   <div class="product">
     <div class="row product__controls">
+      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
 
-      <!--            <label for="product_types" class="label_text">Choose product type:</label>-->
-      <!--            <select name="type" id="product_types">-->
-      <!--                <option value="most_common" class="product_type" disabled> 10 most common words (in process)</option>-->
-      <!--                <option value="rarest" class="product_type">10 rarest words</option>-->
-      <!--                <option value="type3" class="product_type" >Find text in sentence (in process)</option>-->
-      <!--                <option value="type4" class="product_type" disabled>Type4 (in process)</option>-->
-      <!--                <option value="type5" class="product_type" disabled>Type5 (in process)</option>-->
-      <!--                <option value="type6" class="product_type" disabled>Type6 (in process)</option>-->
-      <!--                <option value="type7" class="product_type" disabled>Type7 (in process)</option>-->
-      <!--            </select>-->
+        <select v-model="productType" class="product_types" @change="sendProductType">
+          <option disabled class="product_type product_type_disabled" value="">Choose product type:</option>
+          <option class="product_type product_type_active" value="tenRarestWords">10 rarest words</option>
+          <option class="product_type product_type_active" value="tenMostCommonWords">10 most common words</option>
+          <option disabled class="product_type product_type_disabled" value="type3">Type3</option>
+        </select>
+        <span>Выбрано: {{ productType }}</span>
 
-      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 dropdown">
-        <a class="btn dropdown-toggle product_types" href="#" role="button" id="dropdownMenuLink"
-           data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Choose product type:
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink" data-bar-is="close">
-          <div class="dropdown-header">Choose product type</div>
-          <!--                    <a class="dropdown-item product_type disabled" href="#">10 most common words</a>-->
-          <!--                    <div class="dropdown-divider"></div>-->
-          <a class="dropdown-item product_type " href="#" data-type="ten-rarest-words">10 rarest words</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item product_type active" href="#" data-type="ten-most-common-words">10 most common words</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item product_type disabled" href="#" data-type="type4">Type4</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item product_type disabled" href="#" data-type="type5">Type5</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item product_type disabled" href="#" data-type="type6">Type6</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item product_type disabled" href="#" data-type="type7">Type7</a>
-        </div>
       </div>
 
-      <div class="col find">
-        <input type="button" value="Find" id="findBtn" class="btn">
-      </div>
+
     </div>
-
-
-
-
-
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProductsTypeDropdown.vue"
+  name: "ProductsTypeDropdown.vue",
+  data: () => ({
+    productType: '',
+  }),
+  // props: [ 'productType' ],
+  // mounted() {
+  //   this.$root.$emit('sendProductType', this.productType)
+  // }
+  methods: {
+    sendProductType() {
+      this.$emit('sendType', this.productType)
+    }
+  },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .product {
   display: flex;
   flex-direction: column;
+
+  &__controls {
+    margin: 20px 0;
+  }
+
+  &_types {
+    margin-top: 10px;
+    padding: 0.5em 1.5em;
+    width: calc(100% + 5px); // add 5 as border
+    font-size: 1.2em;
+    background-color: #008CBA;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 5px solid #008CBA;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      border-right: 5px solid white;
+    }
+  }
+
+  &_type {
+    font-size: 1em;
+    display: block;
+    padding: 0.5rem 1.5rem;
+
+    &_active {
+      background-color: white;
+      color: black;
+
+      &:hover {
+        background-color: #00a9e2;
+        color: #fff;
+      }
+    }
+
+    &_disabled {
+      background-color: #cccccc;
+    }
+  }
 }
-
-.product__controls {
-  margin: 20px 0;
-}
-
-.product_types, #findBtn {
-  background-color: #008CBA;
-  color: white;
-  padding: 0.5em 1.5em;
-  font-size: 1.2em;
-  transition-duration: 0.4s;
-  margin-top: 10px;
-}
-
-.product_types {
-  padding: 0.5em 1em;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.product_types:hover, #findBtn:hover, .btnClicked {
-  background-color: white;
-  color: black;
-}
-
-.product_type {
-  font-size: 1em;
-  display: block;
-}
-
-.dropdown-menu {
-  margin: 5px 15px 0 15px;
-  /*display: block;*/
-  width: calc(100% - 30px);
-  /*background-color: #00a9e2;*/
-}
-
-.product_type {
-  padding: 0.5rem 1.5rem;
-}
-
-.product_type:hover {
-  background-color: #00a9e2;
-  color: #fff;
-}
-
-
 
 </style>
+
+
+<!--      <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 dropdown">-->
+<!--        <a class="btn dropdown-toggle product_types" href="#" role="button" id="dropdownMenuLink"-->
+<!--           data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+<!--          Choose product type:-->
+<!--        </a>-->
+<!--        &lt;!&ndash;          @click="showHideDropdown"&ndash;&gt;-->
+
+<!--&lt;!&ndash;        v-if="dropdownIsOpen"&ndash;&gt;-->
+<!--        <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink"-->
+<!--             data-bar-is="close" >-->
+<!--          <div class="dropdown-header">Choose product type</div>-->
+<!--          &lt;!&ndash;                    <a class="dropdown-item product_type disabled" href="#">10 most common words</a>&ndash;&gt;-->
+<!--          &lt;!&ndash;                    <div class="dropdown-divider"></div>&ndash;&gt;-->
+<!--          <a class="dropdown-item product_type" href="#" data-type="ten-rarest-words">10 rarest words</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item product_type active" href="#" data-type="ten-most-common-words">10 most common-->
+<!--            words</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item product_type disabled" href="#" data-type="type4">Type4</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item product_type disabled" href="#" data-type="type5">Type5</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item product_type disabled" href="#" data-type="type6">Type6</a>-->
+<!--          <div class="dropdown-divider"></div>-->
+<!--          <a class="dropdown-item product_type disabled" href="#" data-type="type7">Type7</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->

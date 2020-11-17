@@ -2,18 +2,40 @@
   <div class="row inputs">
     <div class="col input input__left">
       <label for="input_text" class="label_text">Input your text here</label>
-      <textarea name="" id="inputText" cols="30" rows="10" class="textarea"></textarea>
+      <textarea name="" id="inputText" cols="30" rows="10" class="textarea"
+                v-model="inputText" @input="onInput"></textarea>
     </div>
     <div class="col input input__right">
       <label for="result_text" class="label_text">Result</label>
-      <textarea name="" id="resultText" cols="30" rows="10" class="textarea" readonly></textarea>
+      <textarea name="" id="resultText" cols="30" rows="10" class="textarea"
+                readonly v-model="resultText"></textarea>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-name: "Inputs.vue"
+  name: "Inputs.vue",
+  data: () => ({
+    inputText: '',
+  }),
+  props: {
+    resultText: {
+      type: String,
+      default: '',
+    }
+  },
+  methods: {
+
+    onInput() {
+      this.resultText = '';
+      this.sendInputText();
+    },
+
+    sendInputText() {
+      this.$emit('sendInput', this.inputText)
+    }
+  }
 }
 </script>
 
