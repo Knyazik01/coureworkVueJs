@@ -18,14 +18,10 @@ export default {
   name: "Inputs.vue",
   data: () => ({
     inputText: '',
-    // resultTextLocal: '',
   }),
   props: {
     resultText: {
       type: String,
-      // default() {
-      //   return {};
-      // },
       default: '',
     }
   },

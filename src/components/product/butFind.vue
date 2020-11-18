@@ -1,9 +1,6 @@
 <template>
   <div class="col find">
     <input type="button" value="Find" id="findBtn" class="btn" @click="sendResultData">
-<!--    <br>Type: {{ [productType] }}-->
-<!--    <br>input: {{ [inputData] }}-->
-<!--    <br>result: {{ [resultData] }}-->
   </div>
 </template>
 
@@ -68,8 +65,6 @@ export default {
     },
 
     resultBeautify(array) {
-      // console.log([array]);
-      // console.log( array.map( (item) => item.word ).join(' ') );
       return array.map( (item) => item.word ).join('\n');
     },
 

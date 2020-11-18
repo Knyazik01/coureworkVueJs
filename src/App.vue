@@ -10,7 +10,6 @@
           :input-data="this.inpData"
           @sendResult="fetchResult"
       />
-      <!--    <div class="inputs"></div>-->
       <Inputs
           @sendInput="fetchInput"
           @clearResult="fetchEmptyResult"
@@ -20,12 +19,10 @@
     </main>
 
 
-    <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
 // import Header from "@/components/header/Header";
 import ProductsTypeDropdown from "@/components/product/ProductsTypeDropdown";
 import butFind from "@/components/product/butFind";
@@ -40,7 +37,6 @@ export default {
     resData: '',
   }),
   components: {
-    // HelloWorld,
     // Header,
     ProductsTypeDropdown,
     butFind,
@@ -50,17 +46,14 @@ export default {
   methods: {
     fetchProductType(type) {
       this.type = type;
-      // console.log(type);
     },
 
     fetchInput(text) {
       this.inpData = text;
-      // console.log('inp', text);
     },
 
     fetchResult(text) {
       this.resData = text;
-      // console.log('res', text);
     },
 
     fetchEmptyResult() {

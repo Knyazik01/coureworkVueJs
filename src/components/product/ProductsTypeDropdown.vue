@@ -9,7 +9,6 @@
           <option class="product_type product_type_active" value="tenMostCommonWords">10 most common words</option>
           <option disabled class="product_type product_type_disabled" value="type3">Type3</option>
         </select>
-<!--        <br><span>Выбрано: {{ productType }}</span>-->
 
       </div>
 
@@ -24,10 +23,6 @@ export default {
   data: () => ({
     productType: '',
   }),
-  // props: [ 'productType' ],
-  // mounted() {
-  //   this.$root.$emit('sendProductType', this.productType)
-  // }
   methods: {
     sendProductType() {
       this.$emit('sendType', this.productType)
