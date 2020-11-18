@@ -46,6 +46,7 @@ export default {
   methods: {
     fetchProductType(type) {
       this.type = type;
+      this.fetchEmptyResult();
     },
 
     fetchInput(text) {
