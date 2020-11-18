@@ -7,13 +7,14 @@
       />
       <butFind
           :product-type="this.type"
-          :input-data="this.inpText"
+          :input-data="this.inpData"
           @sendResult="fetchResult"
       />
       <!--    <div class="inputs"></div>-->
       <Inputs
           @sendInput="fetchInput"
-          :result-data="this.type"
+          @clearResult="fetchEmptyResult"
+          :result-text="this.resData"
       />
       <Footer/>
     </main>
@@ -35,8 +36,8 @@ export default {
   name: 'App',
   data: () => ({
     type: '',
-    inpText: '',
-    resText: '',
+    inpData: '',
+    resData: '',
   }),
   components: {
     // HelloWorld,
@@ -49,18 +50,23 @@ export default {
   methods: {
     fetchProductType(type) {
       this.type = type;
-      console.log(type);
+      // console.log(type);
     },
 
     fetchInput(text) {
-      this.inpText = text;
-      console.log('inp', text);
+      this.inpData = text;
+      // console.log('inp', text);
     },
 
     fetchResult(text) {
-      this.resText = text;
-      console.log('res', text);
+      this.resData = text;
+      // console.log('res', text);
     },
+
+    fetchEmptyResult() {
+      this.resData = '';
+    },
+
   },
 
 }

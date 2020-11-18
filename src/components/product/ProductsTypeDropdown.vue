@@ -9,7 +9,7 @@
           <option class="product_type product_type_active" value="tenMostCommonWords">10 most common words</option>
           <option disabled class="product_type product_type_disabled" value="type3">Type3</option>
         </select>
-        <span>Выбрано: {{ productType }}</span>
+<!--        <br><span>Выбрано: {{ productType }}</span>-->
 
       </div>
 

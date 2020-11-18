@@ -18,23 +18,31 @@ export default {
   name: "Inputs.vue",
   data: () => ({
     inputText: '',
+    // resultTextLocal: '',
   }),
   props: {
     resultText: {
       type: String,
+      // default() {
+      //   return {};
+      // },
       default: '',
     }
   },
   methods: {
 
     onInput() {
-      this.resultText = '';
+      this.clearResultText();
       this.sendInputText();
     },
 
     sendInputText() {
       this.$emit('sendInput', this.inputText)
-    }
+    },
+
+    clearResultText() {
+      this.$emit('clearResult')
+    },
   }
 }
 </script>

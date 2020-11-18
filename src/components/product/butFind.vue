@@ -1,9 +1,9 @@
 <template>
   <div class="col find">
-    <input type="button" value="Find" id="findBtn" class="btn" @click="sendResult">
-    Type: {{ [productType] }} <br>
-    input: {{ [inputData] }} <br>
-    result: {{ [resultData] }}
+    <input type="button" value="Find" id="findBtn" class="btn" @click="sendResultData">
+<!--    <br>Type: {{ [productType] }}-->
+<!--    <br>input: {{ [inputData] }}-->
+<!--    <br>result: {{ [resultData] }}-->
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 export default {
   name: "butFind.vue",
   data: () => ({
-    resultData: '',
+    resultData: {},
   }),
   props: {
     productType: {
@@ -67,17 +67,23 @@ export default {
       return this.getSortedWordsFromStr(str).slice(-10).reverse();
     },
 
+    resultBeautify(array) {
+      // console.log([array]);
+      // console.log( array.map( (item) => item.word ).join(' ') );
+      return array.map( (item) => item.word ).join('\n');
+    },
 
-    // type3() {
-    //
-    // },
-
-
-    sendResult() {
-      if (this.inputData) {
-        this.resultData = ('tenRarestWords' === this.productType) ? this.tenRarest(this.inputData) :
-            ('tenMostCommonWords' === this.productType) ? this.tenCommon(this.inputData) : '';
-        this.$emit('fetchResult', this.resultData)
+    sendResultData() {
+      if (this.productType) {
+        if (this.inputData) {
+          this.resultData = ('tenRarestWords' === this.productType) ? this.tenRarest(this.inputData) :
+              ('tenMostCommonWords' === this.productType) ? this.tenCommon(this.inputData) : '';
+          this.$emit('sendResult', this.resultBeautify(this.resultData) );
+        } else {
+          alert('Input something!!!')
+        }
+      } else {
+        alert('Choose product type!!!');
       }
     }
   }
