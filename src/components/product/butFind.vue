@@ -23,7 +23,7 @@ export default {
   methods: {
     getWords(str) {
       return str.replace(/[,.!?:'"\n]+/g, ' ')
-          .match(/[a-zа-яёіїє0-9 @]/iug)
+          .match(/[a-zа-яіїєґёыъ0-9 @]/iug)
           .join('')
           .split(' ')
           .filter((itm) => itm !== '');
