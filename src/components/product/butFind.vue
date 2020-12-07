@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     getWords(str) {
-      return str.replace(/[,.!?:'"\n]+/g, ' ')
+      return str.replace(/[,.!?:"\n]+/g, ' ')
           .match(/[a-zа-яіїєґёыъ0-9 @]/iug)
           .join('')
           .split(' ')
